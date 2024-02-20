@@ -91,6 +91,13 @@ async function run() {
    res.send(result);
   })
 
+  app.get(`/brand/:id`,async(req,res)=>{
+    let id=req.params.id
+    const cursor =  cars.find({brandLower:id})
+    const result = await cursor.toArray()
+   res.send(result);
+  })
+
 
 
 
