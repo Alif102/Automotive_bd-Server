@@ -76,6 +76,21 @@ async function run() {
    res.send(result);
   })
 
+  app.post('/brands',async(req,res)=>{
+    let brand=req.body
+    const result = await brands.insertOne(brand);
+   res.send(result);
+  })
+
+
+
+
+  app.get(`/brands`, async (req,res)=>{
+    const cursor =  brands.find()
+    const result = await cursor.toArray()
+   res.send(result);
+  })
+
 
 
 
