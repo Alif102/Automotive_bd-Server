@@ -97,6 +97,11 @@ async function run() {
     const result = await cursor.toArray()
    res.send(result);
   })
+  app.post('/carts',async(req,res)=>{
+    let data=req.body
+      const result = await carts.insertOne(data)
+     res.send(result);
+    })
 
 
 
