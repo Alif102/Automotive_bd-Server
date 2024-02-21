@@ -103,6 +103,24 @@ async function run() {
      res.send(result);
     })
 
+    app.get(`/carts/:id`,async(req,res)=>{
+      let id=req.params.id
+     console.log(id)
+      const cursor =  carts.find({email:id})
+      const result = await cursor.toArray()
+     res.send(result);
+      
+    })
+  
+  
+    app.delete(`/carts/:id`,async(req,res)=>{
+      let id=req.params.id
+     console.log(id)
+     const query = {_id: new ObjectId(id)}
+        const result = await carts.deleteOne(query)
+       res.send(result);
+      })
+
 
 
 
@@ -122,7 +140,7 @@ run().catch(console.dir);
 
 
 app.get('/',(req,res)=>{
-    res.send('welcome to Car-com')
+    res.send('welcome to Automotive Car-com')
 })
 
 app.listen(port,()=>{
